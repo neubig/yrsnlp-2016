@@ -48,7 +48,7 @@ for ITER in range(100):
     my_loss = dy.pickneglogsoftmax(calc_scores(words), tag)
     train_loss += my_loss.value()
     my_loss.backward()
-  trainer.update()
+    trainer.update()
   print("iter %r: train loss/sent=%.4f, time=%.2fs" % (ITER, train_loss/len(train), time.time()-start))
   # Perform testing
   test_correct = 0.0

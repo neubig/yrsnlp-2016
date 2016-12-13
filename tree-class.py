@@ -93,7 +93,7 @@ class TreeLSTMBuilder(object):
 
 # Start DyNet and define trainer
 model = dy.Model()
-trainer = dy.AdamTrainer(model, 0.005)
+trainer = dy.AdamTrainer(model)
 
 # Define the model
 EMB_SIZE = 64
@@ -121,7 +121,7 @@ for ITER in range(100):
     # my_loss = dy.pickneglogsoftmax(calc_scores(tree), l2i[tree.label])
     train_loss += my_loss.value()
     my_loss.backward()
-  trainer.update()
+    trainer.update()
   print("iter %r: train loss/sent=%.4f, time=%.2fs" % (ITER, train_loss/len(train), time.time()-start))
   # Perform testing
   test_correct = 0.0
